@@ -1,0 +1,31 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "3.11.4",
+  "startedAt": "2024-12-03T21:59:36.422684Z",
+  "program": "c:\\Users\\arroc\\OneDrive\\Escritorio\\Apuntes\\UAB\\3rd year\\P_of_ML\\Project\\Reinfrocement-Learning-Project\\src\\part1-dqn copy.ipynb",
+  "git": {
+    "remote": "https://github.com/Arroch35/Reinfrocement-Learning-Project.git",
+    "commit": "693c0ee94fd2faee2d1eee60ae7f1aef13568387"
+  },
+  "email": "arrocha.0305@gmail.com",
+  "root": "c:\\Users\\arroc\\OneDrive\\Escritorio\\Apuntes\\UAB\\3rd year\\P_of_ML\\Project\\Reinfrocement-Learning-Project\\src",
+  "host": "LAPTOP-1H9NPB30",
+  "username": "arroc",
+  "executable": "c:\\Users\\arroc\\anaconda3\\python.exe",
+  "codePathLocal": "part1-dqn copy.ipynb",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "510403088384",
+      "used": "461245140992"
+    }
+  },
+  "memory": {
+    "total": "8386322432"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  }
+}
