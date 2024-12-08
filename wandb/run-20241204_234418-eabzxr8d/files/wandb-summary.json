@@ -1,0 +1,1 @@
+{"rollout/ep_rew_mean":316.27908,"_timestamp":1.7333526736592572e+09,"train/policy_loss":-0.0007942808,"train/learning_rate":0.0007,"train/explained_variance":0,"_wandb":{"runtime":384},"_runtime":383.168889,"time/fps":87,"_step":517,"global_step":32500,"train/entropy_loss":-2.8901918,"train/value_loss":9.126289e-08,"rollout/ep_len_mean":745.093}

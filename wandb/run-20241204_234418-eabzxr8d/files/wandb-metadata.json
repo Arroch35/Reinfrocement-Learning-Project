@@ -1,0 +1,31 @@
+{
+  "os": "Windows-10-10.0.22631-SP0",
+  "python": "3.8.18",
+  "startedAt": "2024-12-04T22:44:18.255804Z",
+  "program": "g:\\La meva unitat\\School\\school\\Uni\\3r\\5e semestre\\Paradigmes d'Aprenentatge Automatic\\project\\Code\\Reinfrocement-Learning-Project\\1.ipynb",
+  "git": {
+    "remote": "https://github.com/Arroch35/Reinfrocement-Learning-Project.git",
+    "commit": "180d9218ccafe9e83fd4cce48691e80e0b47e9d5"
+  },
+  "email": "amritcheema0081@gmail.com",
+  "root": "g:\\La meva unitat\\School\\school\\Uni\\3r\\5e semestre\\Paradigmes d'Aprenentatge Automatic\\project\\Code\\Reinfrocement-Learning-Project",
+  "host": "DESKTOP-GUC5HS2",
+  "username": "amrit",
+  "executable": "c:\\Users\\amrit\\anaconda3\\envs\\python_prova\\python.exe",
+  "codePathLocal": "1.ipynb",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "disk": {
+    "/": {
+      "total": "16106127360",
+      "used": "11380269056"
+    }
+  },
+  "memory": {
+    "total": "16801882112"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  }
+}
