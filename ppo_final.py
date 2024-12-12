@@ -60,7 +60,7 @@ config = {
 # secret_value_0 = userdata.get('wandb')
 
 # Wandb setup
-wandb.login(key="28e25c68517f9df6249670acf865cfc1e82b1a05")
+wandb.login(key="")
 run = wandb.init(
     project="Project_1",
     config=config,
