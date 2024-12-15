@@ -47,11 +47,11 @@ gym.register_envs(ale_py)
 # configuration file
 config = {
     "policy_type": "CnnPolicy",
-    "total_timesteps": 30000000, # 1000000, 3000000, 20000000
+    "total_timesteps": 20000000, # 1000000, 3000000, 20000000
     "Algo": "PPO",
     "env_name": "ALE/DonkeyKong-v5",
-    "model_name": "ALE/DonkeyKong-v5",
-    "Add": "reduce_action_add_intermediate_reward_position",
+    "model_name": "DonkeyKong-v5",
+    "Add": "ppo_final",
     "export_path": "./exports/",
     "videos_path": "./videos/",
 }
@@ -62,7 +62,7 @@ config = {
 # Wandb setup
 wandb.login(key="")
 run = wandb.init(
-    project="Project_1",
+    project="Fine_Tune_Donkey_Kong",
     config=config,
     sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
     save_code=True,  # optional
@@ -327,6 +327,7 @@ class IntermediateRewardWrapper(gym.Wrapper):
         self.last_level = 1
         self.previous_additional_reward = 0.0
         self.last_y_position = 0
+        # self.num_preprocessings = 1
 
     def step(self, action):
 
@@ -336,19 +337,23 @@ class IntermediateRewardWrapper(gym.Wrapper):
 
         # done = terminated or truncated
 
+        # reward = reward * 1.5
         additional_reward = 0.0
+
+        # if self.num_preprocessings == 1:
         # get agent level and position
         agent_level, agent_position = get_agent_level_position(obs)
 
-
+ 
 
         if agent_level is not None and 1 <= agent_level <= len(self.ladder_postion):
             agent_level_reward = (7 - agent_level)* (-0.01)
             additional_reward += agent_level_reward
 
             if agent_level > self.last_level:
-                additional_reward += 500.0
+                additional_reward += 5000.0
                 self.last_level = agent_level
+            
 
             diff = 0
             if agent_position is not None and len(agent_position) > 0:
@@ -358,7 +363,7 @@ class IntermediateRewardWrapper(gym.Wrapper):
                 additional_reward += agent_position_reward
 
                 if action == 2 and diff <= 1 and agent_position[1] > self.last_y_position:
-                    additional_reward += 25.0
+                    additional_reward += 30.0
                 self.last_y_position = agent_position[1]
 
 
@@ -373,6 +378,12 @@ class IntermediateRewardWrapper(gym.Wrapper):
 
         # Update the previous reward
         self.previous_additional_reward = additional_reward
+
+        #     self.num_preprocessings = 0
+        # else:
+        #     self.num_preprocessings = 1
+        #     additional_reward = self.previous_additional_reward
+
 
         # Add the additional reward to the original reward
         reward += additional_reward
@@ -483,8 +494,9 @@ def make_env(env_name, allowed_actions, obs_type="grayscale", render_mode=None,)
 
 
 # select relevant actions
-allowed_actions = [0, 1, 2, 3, 4, 5, 11, 12]
-env = make_vec_env(env_id=make_env(config["env_name"], allowed_actions= allowed_actions), n_envs=8)
+# allowed_actions = [0, 1, 2, 3, 4, 5, 11, 12]
+allowed_actions = [0, 1, 2, 3, 4, 11, 12]
+env = make_vec_env(env_id=make_env(config["env_name"], allowed_actions= allowed_actions), n_envs=1)
 
 # stack 4 frames
 env = VecFrameStack(env, n_stack=4)
@@ -514,6 +526,13 @@ eval_env = MyVecTransposeImage(eval_env)
 print("eval_env MyVecTransposeImage Shape: {}".format(eval_env.observation_space.shape))
 print("eval_env Final Observation Space: {}".format(eval_env.observation_space.shape))
 
+# Path to pre-trained model
+pretrained_model_path = config["export_path"] + config["model_name"]
+
+# Load the pre-trained model
+pretrained_model = PPO.load("path_to_pretrained_model", env=env)
+pretrained_policy = pretrained_model.policy
+
 model = PPO(config["policy_type"],
             env,
             verbose=0,
@@ -521,20 +540,23 @@ model = PPO(config["policy_type"],
             batch_size=256,
             learning_rate=2.5e-4, #2.5e-4, 0.001
             gamma=0.99,
-            n_steps=128,
-            n_epochs=4,
+            n_steps=2048,
+            n_epochs=10,
             clip_range=0.1,
             vf_coef=0.5,
-            ent_coef=0.05, # 0.01
+            ent_coef=0.01, # 0.01
             policy_kwargs=dict(net_arch=[512, 256], normalize_images=False),
             device="cuda")
+
+model.policy.load_state_dict(pretrained_policy.state_dict())
+
 
 # Create the evaluation callback
 eval_callback = EvalCallback(
     eval_env,
     best_model_save_path=config["export_path"],  # directory to save the best model
     log_path=config["export_path"],              # evaluation logs
-    eval_freq=500000,                            # evaluate the model every 500,000 steps
+    eval_freq=150000,                            # evaluate the model every 500,000 steps
     deterministic=True,
     render=False
 )
@@ -580,7 +602,10 @@ callbacks = CallbackList([eval_callback, WandbCallback(verbose=2), GradientInspe
 
 # train
 t0 = datetime.now()
-model.learn(total_timesteps=config["total_timesteps"], callback=callbacks)
+# model.learn(total_timesteps=config["total_timesteps"], callback=callbacks)
+# Additional training
+additional_timesteps = 2_000_000  # Number of steps for further training
+model.learn(total_timesteps=additional_timesteps, callback=callbacks)
 t1 = datetime.now()
 print('>>> Training time (hh:mm:ss.ms): {}'.format(t1-t0))
 
