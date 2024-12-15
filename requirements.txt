@@ -1,0 +1,12 @@
+ale-py==0.10.1           # For ALE Atari environments
+gymnasium==1.0.0         # Gymnasium for reinforcement learning environments
+stable-baselines3==2.4.0 # Stable-Baselines3 for RL algorithms
+torch==2.5.1             # PyTorch for deep learning
+wandb==0.18.5            # Weights and Biases for experiment tracking
+matplotlib==3.7.1        # For plotting and visualization
+numpy==1.24.3            # Numerical computations
+opencv-python==4.10.0.84 # OpenCV for image processing
+Pillow==10.3.0           # Python Imaging Library for handling images
+torchsummary==1.5.1      # To view model summaries
+
+
