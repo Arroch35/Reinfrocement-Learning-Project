@@ -8,5 +8,5 @@ numpy==1.24.3            # Numerical computations
 opencv-python==4.10.0.84 # OpenCV for image processing
 Pillow==10.3.0           # Python Imaging Library for handling images
 torchsummary==1.5.1      # To view model summaries
-
+notebook==6.5.4          # To run Jupiter Nootebooks
 
