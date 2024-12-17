@@ -15,7 +15,7 @@ Here is a demonstration of the agents's performance:
 
 ### Donkey Kong
 
-!(videos/donkey_kong/fine_tunned.gif)
+![](videos/donkey_kong/fine_tunned.gif)
 
 ### Pong
 
