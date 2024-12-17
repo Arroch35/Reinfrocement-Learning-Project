@@ -11,7 +11,7 @@ Here is a demonstration of the agents's performance:
 
 ### Breakout
 
-![DQN](videos/breakout/video_DQN.gif) ![REINFORCE](videos/breakout/video_REINFORCE.gif)
+![DQN](videos/breakout/video_DQN.gif)
 
 ### Donkey Kong
 
