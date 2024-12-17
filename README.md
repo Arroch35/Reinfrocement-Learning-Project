@@ -53,25 +53,25 @@ Before executing any of the files, make sure you change the kay value "YOUR_API_
 
 Depending on the game or algorithm you want to train, you should use one of the following commands:
 ```
-jupyter notebook src/breakout/part1_DQN.ipynb  # To train the DQN algorithm on Breakout
-jupyter notebook src/breakout/part1_REINFORCE.ipynb  # To train the REINFORCE algorithm on Breakout
-python src/donkeyKong/part2_A2C.py  # To train the A2C algorithm on Donkey Kong
+jupyter notebook src/breakout/dqn.ipynb  # To train the DQN algorithm on Breakout
+jupyter notebook src/breakout/reinforce.ipynb  # To train the REINFORCE algorithm on Breakout
+python src/donkeyKong/a2c_final.py  # To train the A2C algorithm on Donkey Kong
 python src/donkeyKong/ppo_final.py  # To train the PPO algorithm on Donkey Kong
 python src/donkeyKong/ppo_final_frame_skipping.py  # To train the PPO algorithm on Donkey Kong where we climn ladder automatically
 python src/donkeyKong/fine_tunning.py # To make combination of previous 2 models (ppo_final.py and ppo_final_frame_skipping.py).
 python src/pong/pong_general_left.py  # To train the Pong agent on the left
 python src/pong/pong_right.py  # To train the Pong agent on the right
 ```
-The files above are also used to test the models.
+The files dqn.ipynb and reinforce.ipynb are also used to test the models and create the videos.
 
-For the files of the part one, after the training, there will be saved the models and the videos. The models will be saved in the folder called models, and the videos in the folder called videos. 
+To test the models or make the videos of Donkey Kong and Pong you must run one of the following commands.
 
-For the files of the second and third part, there will be saved only the models. To make the video of the desired model of these parts, change the line of the code to load model *model = A2C.load("../models/best_model")* for the desired model. Then execute the following command:
+Before running the commands, make sure you change the paths of the models for the desired models path.
 ```
-jupyter notebook src/make_video.ipynb
-jupyter notebook src/evulate_model.ipynb # you have to put path of model in file
-jupyter notebook src/pong_test.ipynb # you have to put path of models in file
-jupyter notebook src/pong_multi_agent_test.ipynb # you have to put path of models in file
+jupyter notebook src/make_video.ipynb # To make videos
+jupyter notebook src/evulate_model.ipynb # To evaluate the models of DonKEY Kong 
+jupyter notebook src/pong_test.ipynb # To test the pong models separately
+jupyter notebook src/pong_multi_agent_test.ipynb # To test the pong models together 
 ```
 
 
