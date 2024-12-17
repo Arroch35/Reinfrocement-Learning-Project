@@ -42,20 +42,23 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+---
+
+
 ## Train and test the models
 
-In the folder 'src' you will find the files used to train and test the models.
+In the folder 'src' you will find the files used to train and test the models. There are 3 folders, one for each game.
 
-Before executing any of the files, make sure you change the kay value "YOUR_WANDB_API_KEY" for your actuall wandb api key in the function wandb.init(). 
+Before executing any of the files, make sure you change the kay value "YOUR_API_KEY" for your actuall wandb api key in the function wandb.init(). 
 
 Depending on the game or algorithm you want to train, you should use one of the following commands:
 ```
-jupyter notebook src/part1_DQN.ipynb  # To train the DQN algorithm on Breakout
-jupyter notebook src/part1_REINFORCE.ipynb  # To train the REINFORCE algorithm on Breakout
-python src/part2_PPO.py  # To train the PPO algorithm on Donkey Kong
-python src/part2_A2C.py  # To train the A2C algorithm on Donkey Kong
-python src/pong_left.py  # To train the Pong agent on the left
-python src/pong_right.py  # To train the Pong agent on the right
+jupyter notebook src/breakout/part1_DQN.ipynb  # To train the DQN algorithm on Breakout
+jupyter notebook src/breakout/part1_REINFORCE.ipynb  # To train the REINFORCE algorithm on Breakout
+python src/donkeyKong/part2_PPO.py  # To train the PPO algorithm on Donkey Kong
+python src/donkeyKong/part2_A2C.py  # To train the A2C algorithm on Donkey Kong
+python src/pong/pong_left.py  # To train the Pong agent on the left
+python src/pong/pong_right.py  # To train the Pong agent on the right
 ```
 The files above are also used to test the models.
 
