@@ -42,6 +42,9 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+---
+
+
 ## Train and test the models
 
 In the folder 'src' you will find the files used to train and test the models.
