@@ -69,6 +69,9 @@ For the files of the part one, after the training, there will be saved the model
 For the files of the second and third part, there will be saved only the models. To make the video of the desired model of these parts, change the line of the code to load model *model = A2C.load("../models/best_model")* for the desired model. Then execute the following command:
 ```
 jupyter notebook src/make_video.ipynb
+jupyter notebook src/evulate_model.ipynb # you have to put path of model in file
+jupyter notebook src/pong_test.ipynb # you have to put path of models in file
+jupyter notebook src/pong_multi_agent_test.ipynb # you have to put path of models in file
 ```
 
 
