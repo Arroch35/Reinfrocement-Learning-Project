@@ -55,9 +55,11 @@ Depending on the game or algorithm you want to train, you should use one of the 
 ```
 jupyter notebook src/breakout/part1_DQN.ipynb  # To train the DQN algorithm on Breakout
 jupyter notebook src/breakout/part1_REINFORCE.ipynb  # To train the REINFORCE algorithm on Breakout
-python src/donkeyKong/part2_PPO.py  # To train the PPO algorithm on Donkey Kong
 python src/donkeyKong/part2_A2C.py  # To train the A2C algorithm on Donkey Kong
-python src/pong/pong_left.py  # To train the Pong agent on the left
+python src/donkeyKong/ppo_final.py  # To train the PPO algorithm on Donkey Kong
+python src/donkeyKong/ppo_final_frame_skipping.py  # To train the PPO algorithm on Donkey Kong where we climn ladder automatically
+python src/donkeyKong/fine_tunning.py # To make combination of previous 2 models (ppo_final.py and ppo_final_frame_skipping.py).
+python src/pong/pong_general_left.py  # To train the Pong agent on the left
 python src/pong/pong_right.py  # To train the Pong agent on the right
 ```
 The files above are also used to test the models.
