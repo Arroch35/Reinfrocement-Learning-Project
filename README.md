@@ -11,15 +11,15 @@ Here is a demonstration of the agents's performance:
 
 ### Breakout
 
-![DQN](data/video_noisy4.gif) ![REINFORCE](data/video_noisy4.gif)
+![DQN](videos/breakout/video_DQN.gif) ![REINFORCE](videos/breakout/video_REINFORCE.gif)
 
 ### Donkey Kong
 
-![PPO](data/video_noisy4.gif) ![A2C](data/video_noisy4.gif)
+!(videos/donkey_kong/fine_tunned.gif)
 
 ### Pong
 
-![PPO](data/video_noisy4.gif) ![PPO](data/video_noisy4.gif)
+![Right](videos/pong/right.gif) ![Left](videos/pong/left.gif)
 
 ---
 
